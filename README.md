@@ -1,4 +1,5 @@
 ==== MODIFIED FOR AFROZAAR ====
+
 Contributor: Jan-Louis Crafford, Afrozaar Consulting
 Github repo: https://github.com/Afrozaar/nextend-facebook-connect
 
@@ -18,6 +19,7 @@ This is to allow our apps and website to use the same credentials when creating 
 
 
 === Nextend Facebook Connect ===
+
 Contributors: nextendweb
 Tags: facebook, register, login, social connect, social, facebook connect
 Donate link: https://www.facebook.com/nextendweb
