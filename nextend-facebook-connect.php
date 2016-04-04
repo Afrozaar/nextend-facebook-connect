@@ -4,8 +4,8 @@
 Plugin Name: Nextend Facebook Connect
 Plugin URI: http://nextendweb.com/
 Description: This plugins helps you create Facebook login and register buttons. The login and register process only takes one click.
-Version: 1.5.9
-Author: Roland Soos
+Version: 1.5.9_1
+Author: Roland Soos (Modified by Jan-Louis Crafford; jlo@afrozaar.com)
 License: GPL2
 */
 
@@ -39,7 +39,7 @@ if(!function_exists('nextend_uniqid')){
         $_COOKIE['nextend_uniqid'] = uniqid('nextend', true);
         setcookie('nextend_uniqid', $_COOKIE['nextend_uniqid'], time() + 3600, '/');
         set_site_transient('n_'.$_COOKIE['nextend_uniqid'], 1, 3600);
-        
+
         return $_COOKIE['nextend_uniqid'];
     }
 }
@@ -165,8 +165,14 @@ function new_fb_login_action() {
             require_once (ABSPATH . WPINC . '/registration.php');
             $random_password = wp_generate_password($length = 12, $include_standard_special_chars = false);
             if (!isset($new_fb_settings['fb_user_prefix'])) $new_fb_settings['fb_user_prefix'] = 'facebook-';
-            
-            $username = strtolower( $user_profile['first_name'] . $user_profile['last_name'] );
+
+            // AFROZAAR CODE CHANGE START
+
+            //$username = strtolower( $user_profile['first_name'] . $user_profile['last_name'] );
+            $username = $user_profile['id'];
+
+            // AFROZAAR CODE CHANGE END
+
             $sanitized_user_login = sanitize_user($new_fb_settings['fb_user_prefix'] . $username);
             if (!validate_username($sanitized_user_login)) {
               $sanitized_user_login = sanitize_user('facebook' . $user_profile['id']);
@@ -228,7 +234,7 @@ function new_fb_login_action() {
         if ($current_user->ID == $ID) {
 
           // It was a simple login
-          
+
         } elseif ($ID === NULL) { // Let's connect the accout to the current user!
 
           $wpdb->insert($wpdb->prefix . 'social_users', array(
@@ -273,7 +279,7 @@ function new_fb_login_action() {
     if ($redirect == '' || $redirect == new_fb_login_url()) {
       set_site_transient( nextend_uniqid().'_fb_r', site_url(), 3600);
     }
-    
+
     header('Location: ' . $loginUrl);
     exit;
   }else{
@@ -320,9 +326,9 @@ function new_add_fb_connect_field() {
 ?>
   <table class="form-table">
     <tbody>
-      <tr>	
+      <tr>
         <th>
-        </th>	
+        </th>
         <td>
           <?php
   if (new_fb_is_user_connected()) {
@@ -465,7 +471,7 @@ function new_fb_login_url() {
 }
 
 function new_fb_redirect() {
-  
+
   $redirect = get_site_transient( nextend_uniqid().'_fb_r');
 
   if (!$redirect || $redirect == '' || $redirect == new_fb_login_url()) {

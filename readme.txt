@@ -1,5 +1,24 @@
+==== MODIFIED FOR AFROZAAR ====
+Contributor: Jan-Louis Crafford, Afrozaar Consulting
+Github repo: https://github.com/Afrozaar/nextend-facebook-connect
+
+This is a fork of the Nextend Facebook Connect plugin for Wordpress. (see README details below for original author & plugin information)
+
+The only difference made in this fork is the string being used for the WP username when creating a new user has been changed from
+~~~~
+$username = strtolower( $user_profile['first_name'] . $user_profile['last_name'] );
+~~~~
+to
+~~~~
+$username = $user_profile['id'];
+~~~~
+
+This is to allow our apps and website to use the same credentials when creating a new WP user.
+
+
+
 === Nextend Facebook Connect ===
-Contributors: nextendweb 
+Contributors: nextendweb
 Tags: facebook, register, login, social connect, social, facebook connect
 Donate link: https://www.facebook.com/nextendweb
 Requires at least: 3.0
@@ -14,16 +33,16 @@ One click registration & login plugin for Facebook? Easy installation? Is it tot
 
 Check the [DEMO](http://secure.nextendweb.com/) on our site.
 
-Also we created a [Social Connect button generator](http://www.nextendweb.com/social-connect-button-generator) for this plugin. This allows you to create fancy login buttons. 
+Also we created a [Social Connect button generator](http://www.nextendweb.com/social-connect-button-generator) for this plugin. This allows you to create fancy login buttons.
 
 Personally, I hate to fill out registration forms, waiting for confirmation e-mails, so we designed this plugin for our website. Now, we want to share this very usable plugin with everyone, for free!
- 
+
 **Why should you choose Nextend Facebook Connect plugin from the many social plugins?**
 
 * If your visitors have a Facebook profile, they can register your site with a single click, and later to log in too.
 * The previously registered users can simply attach their existing Facebook profile to their account, so in the future, they can logging in with the one social button.
 * The plugin has multiple desings, so it fits all kind of websites smoothly and elegantly.
-* The plugin supports Facebook profile picture as avatar. 
+* The plugin supports Facebook profile picture as avatar.
 * Very simple to use.
 * Fast and helpful support.
 
@@ -31,7 +50,7 @@ If you like our stuff donate a like to our [Facebook page](https://www.facebook.
 
 #### Usage
 
-After you activated the plugin, the plugin will autmatically 
+After you activated the plugin, the plugin will autmatically
 
 * add the login buttons to the WordPress login page. See screenshot #1
 * add the account linking buttons to the WordPress profile page. See screenshot #2
@@ -129,7 +148,7 @@ After you activated the plugin, the plugin will autmatically
 
 = 1.4.48 =
 * Avatar fix
-* Changes in actions 
+* Changes in actions
 
 = 1.4.47 =
 * Optimalizations
@@ -232,11 +251,11 @@ After you activated the plugin, the plugin will autmatically
 
 = 1.4.4 =
 * Modified login redirect issue for wp-login.php - author Michel Weimerskirch
-* Added fix redirect url support. If you leave it empty or "auto" it will try to redirect back the user to the last visited page. 
+* Added fix redirect url support. If you leave it empty or "auto" it will try to redirect back the user to the last visited page.
 
 = 1.4.3 =
 * Facebook Certification bugfix
- 
+
 = 1.4 =
 * Added Social button generator support
 
